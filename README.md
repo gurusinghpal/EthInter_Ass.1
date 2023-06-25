@@ -12,7 +12,7 @@ The AssertionContract allows users to set, increment, and decrement a stored val
 
 - `decrementValue(uint _amount)`: Decrements the current value by the specified `_amount` parameter. It uses `revert()` to revert the transaction if the amount exceeds the current value.
 
-  ## Prerequisites
+## Prerequisites
 
 To use this smart contract, you'll need the following:
 
@@ -20,7 +20,7 @@ To use this smart contract, you'll need the following:
 - Ethereum development environment (e.g., Remix, Truffle, Hardhat)
 - Test environment (e.g., Ganache)
 
-  ## Getting Started
+## Getting Started
 
 ### Executing Program
 
