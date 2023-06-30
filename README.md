@@ -6,11 +6,11 @@ This is a Solidity smart contract that demonstrates the usage of `require()`, `a
 
 The AssertionContract allows users to set, increment, and decrement a stored value. It includes three functions:
 
-- `setValue(uint _value)`: Sets the value to the specified `_value` parameter. It uses `require()` to check that the value is greater than zero before updating it.
+- `requireSet(uint _value)`: Sets the value to the specified `_value` parameter. It uses `require()` to check that the value is greater than zero before updating it.
 
-- `incrementValue(uint _amount)`: Increments the current value by the specified `_amount` parameter. It uses `assert()` to check that the new value is greater than the previous value.
+- `assertIncrement(uint _amount)`: Increments the current value by the specified `_amount` parameter. It uses `assert()` to check that the new value is greater than the previous value.
 
-- `decrementValue(uint _amount)`: Decrements the current value by the specified `_amount` parameter. It uses `revert()` to revert the transaction if the amount exceeds the current value.
+- `revertDecrement(uint _amount)`: Decrements the current value by the specified `_amount` parameter. It uses `revert()` to revert the transaction if the amount exceeds the current value.
 
 ## Prerequisites
 
@@ -32,17 +32,17 @@ Once you are on the Remix website, create a new file by clicking on the "+" icon
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract AssertionContract {
+contract SmartContract {
     uint public value;
     
-    function setValue(uint _value) external {
+    function requireSet (uint _value) external {
         // Using require() to check a condition
         require(_value > 0, "Value must be greater than zero");
         
         value = _value;
     }
     
-    function incrementValue(uint _amount) external {
+    function assertIncrement (uint _amount) external {
         // Using assert() to check an invariant
         uint newValue = value + _amount;
         assert(newValue > value);
@@ -50,7 +50,7 @@ contract AssertionContract {
         value = newValue;
     }
     
-    function decrementValue(uint _amount) external {
+    function revertDecrement (uint _amount) external {
         // Using revert() to revert the transaction
         if (_amount > value) {
             revert("Amount exceeds current value");
@@ -59,6 +59,7 @@ contract AssertionContract {
         value -= _amount;
     }
 }
+
 ```
 
 1. Clone this repository or copy the code from the smart contract file.
